@@ -17,4 +17,9 @@ class TodoProvider with ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+  void isCompleted(Todo todo) {
+    todos.remove(todo);
+    notifyListeners();
+  }
 }

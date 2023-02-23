@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../providers/todo_provider.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -25,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Provider API'),
+        elevation: 0.0,
       ),
       body: Consumer<TodoProvider>(
         builder: (context, value, child) {
@@ -49,6 +49,14 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(
                     color: todo.completed ? Colors.grey : Colors.black,
                   ),
+                ),
+                trailing: Checkbox(
+                  onChanged: (value) {
+                    setState(() {
+                      todo.completed = value!;
+                    });
+                  },
+                  value: value.todos[index].completed,
                 ),
               );
             },
